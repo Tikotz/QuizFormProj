@@ -1,0 +1,82 @@
+<h1> Demon Slayer Quiz</h1>
+
+
+<form [hidden]="showForm" #myForm="ngForm" (submit)="getFormValues(myForm.value)">
+    <div style="font-size: 20px;"> <b>What is the name of the main character ?</b> <br>
+        <select type="Q1"
+         aria-describedby="Q1Help"
+         required
+         minlength="3"
+         ngModel
+         #MainCharactername="ngModel"
+         name="Q1MainCharacter"
+         class="combo">
+            <option value="Tanjiro Kamado">Tanjiro Kamado</option>
+            <option value="Hashibira Inosuke">Hashibira Inosuke</option>
+            <option value="Zenitsu Agatsuma">Zenitsu Agatsuma</option>
+            </select>
+
+            <div class="myErr"  
+            *ngIf="MainCharactername.touched && MainCharactername.invalid"
+            id="Q1Help" >This field is required AND must be at least 3+ letters!!!</div> 
+            
+        </div>
+    <br>
+    <div style="font-size:20px;"><b> who is the main Demon ?</b> 
+        <br>
+        <select type="Q2"
+         aria-describedby="Q2Help"
+         required
+         minlength="3"
+         ngModel
+         #MainDemonrname="ngModel"
+         name="Q2MainCharacter"
+         class="combo">
+            <option value="Nezuko Kamado">Nezuko Kamado</option>
+            <option value="Akaza">Akaza</option>
+            <option value="Muzan Kibutsuji">Muzan Kibutsuji</option>
+            </select> 
+
+            <div class="myErr"  
+            *ngIf="MainDemonrname.touched && MainDemonrname.invalid"
+            id="Q2Help" >This field is required AND must be at least 3+ letters!!!</div> 
+        </div>
+      <br>
+    <br>
+    <div style="font-size:20px;"><b> who is the Sound Hashira ?</b> 
+        <br>
+        <select
+         type="Q3"
+         aria-describedby="Q3Help"
+         required
+         minlength="3"
+         ngModel
+         #SoundHashira="ngModel"
+         name="Q3MainCharacter"
+         class="combo">
+            <option value="Giyu Tomioka">Giyu Tomioka</option>
+            <option value="Kyojuro Rengoku">Kyojuro Rengoku</option>
+            <option value="Tengen Uzui">Tengen Uzui</option>
+            <option value="Sanemi Shinazugawa">Sanemi Shinazugawa</option>
+            </select>
+
+            <div class="myErr"  
+            *ngIf="SoundHashira.touched && SoundHashira.invalid"
+            id="Q3Help" >This field is required AND must be at least 3+ letters!!!</div> 
+    </div>
+    <br>
+    <button
+        [disabled]="!myForm.valid" 
+        class="btn btn-primary">Submit</button>
+</form>
+
+<div [hidden]="showResult" class="Results">
+    <p *ngIf="counter === 30"> You are a true Demon Slayer FAN!!! <br>
+    Your Score is: 30</p>
+    <p *ngIf="counter === 20"> You can do Better than this! <br>
+    Your score is: 20</p>
+    <p *ngIf="counter <= 10"> Go watch Demon Slayer Now !!! <br>
+    Your Score is: 10 OR Lower...</p>
+
+    <button (click)="handleSave()"> Save Results</button>
+</div>
